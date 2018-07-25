@@ -13,15 +13,20 @@ La Gem Faker est utilisé.
 
 Entrez les commandes suivantes dans votre Terminal.
 
-* **Etape :** Installations des gem
+* **Etape :** 
+* Installations des gem
+* Initialisation de la base de donnée
+* Remplissage de la Base de Donnée
+
+
 ```
-Bundle install
+$ bundle install
 ```
 ```
-Rails db:migrate
+$ rails db:migrate
 ```
 ```
-Rails db:seed 
+$ rails db:seed 
 ```
 
 puis Ouvrir le fichier 'development.sqlite3' dans votre outil de visualisation de BDD (exemple: 'DB Browser for SQLite')

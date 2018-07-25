@@ -6052,3 +6052,537 @@ Migrating to AddIndexToLink (20180725185421)
   ↳ db/seeds.rb:35
   [1m[35m (70.9ms)[0m  [1m[36mcommit transaction[0m
   ↳ db/seeds.rb:35
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (87.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (74.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20180725180703)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180725180703_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180725180703"]]
+  ↳ bin/rails:9
+  [1m[35m (84.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateLinks (20180725180954)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "links" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180725180954_create_links.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180725180954"]]
+  ↳ bin/rails:9
+  [1m[35m (72.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateComments (20180725181152)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "comments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "content" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180725181152_create_comments.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180725181152"]]
+  ↳ bin/rails:9
+  [1m[35m (72.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to AddTitleLinks (20180725183200)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180725183200"]]
+  ↳ bin/rails:9
+  [1m[35m (53.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateSubcomments (20180725184122)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "subcomments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "content" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20180725184122_create_subcomments.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180725184122"]]
+  ↳ bin/rails:9
+  [1m[35m (75.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to AddCommentsToUser (20180725184815)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "comments" ADD "user_id" integer[0m
+  ↳ db/migrate/20180725184815_add_comments_to_user.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_user_id" ON "comments" ("user_id")[0m
+  ↳ db/migrate/20180725184815_add_comments_to_user.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180725184815"]]
+  ↳ bin/rails:9
+  [1m[35m (80.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to AddSubcommentsToComment (20180725184843)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "subcomments" ADD "comment_id" integer[0m
+  ↳ db/migrate/20180725184843_add_subcomments_to_comment.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_subcomments_on_comment_id" ON "subcomments" ("comment_id")[0m
+  ↳ db/migrate/20180725184843_add_subcomments_to_comment.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180725184843"]]
+  ↳ bin/rails:9
+  [1m[35m (79.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to AddIndexToLink (20180725185421)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "links" ADD "user_id" integer[0m
+  ↳ db/migrate/20180725185421_add_index_to_link.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_links_on_user_id" ON "links" ("user_id")[0m
+  ↳ db/migrate/20180725185421_add_index_to_link.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180725185421"]]
+  ↳ bin/rails:9
+  [1m[35m (98.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-07-25 22:29:18.461370"], ["updated_at", "2018-07-25 22:29:18.461370"]]
+  ↳ bin/rails:9
+  [1m[35m (48.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Tom Baker"], ["created_at", "2018-07-25 22:29:22.247140"], ["updated_at", "2018-07-25 22:29:22.247140"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (53.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "William Hartnell"], ["created_at", "2018-07-25 22:29:22.302396"], ["updated_at", "2018-07-25 22:29:22.302396"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (56.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Jon Pertwee"], ["created_at", "2018-07-25 22:29:22.360485"], ["updated_at", "2018-07-25 22:29:22.360485"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (48.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Matt Smith"], ["created_at", "2018-07-25 22:29:22.410550"], ["updated_at", "2018-07-25 22:29:22.410550"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (48.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Peter Capaldi"], ["created_at", "2018-07-25 22:29:22.460463"], ["updated_at", "2018-07-25 22:29:22.460463"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (48.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Paul McGann"], ["created_at", "2018-07-25 22:29:22.510575"], ["updated_at", "2018-07-25 22:29:22.510575"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (48.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Peter Capaldi"], ["created_at", "2018-07-25 22:29:22.560479"], ["updated_at", "2018-07-25 22:29:22.560479"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (48.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "William Hartnell"], ["created_at", "2018-07-25 22:29:22.610551"], ["updated_at", "2018-07-25 22:29:22.610551"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (48.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Paul McGann"], ["created_at", "2018-07-25 22:29:22.660364"], ["updated_at", "2018-07-25 22:29:22.660364"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (48.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Tom Baker"], ["created_at", "2018-07-25 22:29:22.710227"], ["updated_at", "2018-07-25 22:29:22.710227"]]
+  ↳ db/seeds.rb:5
+  [1m[35m (48.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:5
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[36mLink Create (0.2ms)[0m  [1m[32mINSERT INTO "links" ("title", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "plum"], ["url", "http://connparisian.co/margot"], ["created_at", "2018-07-25 22:29:22.766989"], ["updated_at", "2018-07-25 22:29:22.766989"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (50.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[36mLink Create (0.2ms)[0m  [1m[32mINSERT INTO "links" ("title", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "white"], ["url", "http://heidenreichgibson.biz/chaya.witting"], ["created_at", "2018-07-25 22:29:22.819521"], ["updated_at", "2018-07-25 22:29:22.819521"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (56.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[36mLink Create (0.2ms)[0m  [1m[32mINSERT INTO "links" ("title", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "ivory"], ["url", "http://bashirian.name/jacquiline.rutherford"], ["created_at", "2018-07-25 22:29:22.877845"], ["updated_at", "2018-07-25 22:29:22.877845"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (48.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[36mLink Create (0.2ms)[0m  [1m[32mINSERT INTO "links" ("title", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "plum"], ["url", "http://johnson.org/brittny"], ["created_at", "2018-07-25 22:29:22.927757"], ["updated_at", "2018-07-25 22:29:22.927757"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (48.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[36mLink Create (0.2ms)[0m  [1m[32mINSERT INTO "links" ("title", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "cyan"], ["url", "http://zieme.info/shirley"], ["created_at", "2018-07-25 22:29:22.977802"], ["updated_at", "2018-07-25 22:29:22.977802"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (48.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[36mLink Create (0.2ms)[0m  [1m[32mINSERT INTO "links" ("title", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "black"], ["url", "http://swaniawskiparisian.name/wendolyn_mann"], ["created_at", "2018-07-25 22:29:23.027794"], ["updated_at", "2018-07-25 22:29:23.027794"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (48.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[36mLink Create (0.2ms)[0m  [1m[32mINSERT INTO "links" ("title", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "orchid"], ["url", "http://quitzon.net/lakita.schaden"], ["created_at", "2018-07-25 22:29:23.078151"], ["updated_at", "2018-07-25 22:29:23.078151"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (55.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[36mLink Create (0.2ms)[0m  [1m[32mINSERT INTO "links" ("title", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "ivory"], ["url", "http://moore.biz/alfredo_rutherford"], ["created_at", "2018-07-25 22:29:23.136173"], ["updated_at", "2018-07-25 22:29:23.136173"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (56.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[36mLink Create (0.2ms)[0m  [1m[32mINSERT INTO "links" ("title", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "sky blue"], ["url", "http://prohaska.name/drema.hayes"], ["created_at", "2018-07-25 22:29:23.194600"], ["updated_at", "2018-07-25 22:29:23.194600"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (56.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[36mLink Create (0.2ms)[0m  [1m[32mINSERT INTO "links" ("title", "url", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "ivory"], ["url", "http://moore.biz/franklin.rodriguez"], ["created_at", "2018-07-25 22:29:23.252819"], ["updated_at", "2018-07-25 22:29:23.252819"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (82.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[36mComment Create (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("content", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["content", "There is nothing regular about Chuck Norris' expressions."], ["created_at", "2018-07-25 22:29:23.342819"], ["updated_at", "2018-07-25 22:29:23.342819"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (65.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[36mComment Create (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("content", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["content", "Chuck Norris doesn't need the cloud to scale his applications, he uses his laptop."], ["created_at", "2018-07-25 22:29:23.410914"], ["updated_at", "2018-07-25 22:29:23.410914"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (48.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[36mComment Create (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("content", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["content", "There is no Esc key on Chuck Norris' keyboard, because no one escapes Chuck Norris."], ["created_at", "2018-07-25 22:29:23.460877"], ["updated_at", "2018-07-25 22:29:23.460877"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (48.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[36mComment Create (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("content", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["content", "Chuck Norris doesn't delete files, he blows them away."], ["created_at", "2018-07-25 22:29:23.510914"], ["updated_at", "2018-07-25 22:29:23.510914"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (48.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[36mComment Create (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("content", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["content", "Whiteboards are white because Chuck Norris scared them that way."], ["created_at", "2018-07-25 22:29:23.560870"], ["updated_at", "2018-07-25 22:29:23.560870"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (48.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mSubcomment Create (0.2ms)[0m  [1m[32mINSERT INTO "subcomments" ("content", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["content", "Thick slices of French toast bread, brown sugar, half-and-half and vanilla, topped with powdered sugar. With two eggs served any style, and your choice of smoked bacon or smoked ham."], ["created_at", "2018-07-25 22:29:23.618106"], ["updated_at", "2018-07-25 22:29:23.618106"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (49.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mSubcomment Create (0.2ms)[0m  [1m[32mINSERT INTO "subcomments" ("content", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["content", "28-day aged 300g USDA Certified Prime Ribeye, rosemary-thyme garlic butter, with choice of two sides."], ["created_at", "2018-07-25 22:29:23.669231"], ["updated_at", "2018-07-25 22:29:23.669231"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (48.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mSubcomment Create (0.2ms)[0m  [1m[32mINSERT INTO "subcomments" ("content", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["content", "Thick slices of French toast bread, brown sugar, half-and-half and vanilla, topped with powdered sugar. With two eggs served any style, and your choice of smoked bacon or smoked ham."], ["created_at", "2018-07-25 22:29:23.719310"], ["updated_at", "2018-07-25 22:29:23.719310"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (48.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mSubcomment Create (0.3ms)[0m  [1m[32mINSERT INTO "subcomments" ("content", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["content", "Three eggs with cilantro, tomatoes, onions, avocados and melted Emmental cheese. With a side of roasted potatoes, and your choice of toast or croissant."], ["created_at", "2018-07-25 22:29:23.770063"], ["updated_at", "2018-07-25 22:29:23.770063"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (47.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mSubcomment Create (0.2ms)[0m  [1m[32mINSERT INTO "subcomments" ("content", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["content", "Three egg omelet with Roquefort cheese, chives, and ham. With a side of roasted potatoes, and your choice of toast or croissant."], ["created_at", "2018-07-25 22:29:23.819350"], ["updated_at", "2018-07-25 22:29:23.819350"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (70.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mSubcomment Create (0.2ms)[0m  [1m[32mINSERT INTO "subcomments" ("content", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["content", "Fresh Norwegian salmon, lightly brushed with our herbed Dijon mustard sauce, with choice of two sides."], ["created_at", "2018-07-25 22:29:23.891853"], ["updated_at", "2018-07-25 22:29:23.891853"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (52.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mSubcomment Create (0.2ms)[0m  [1m[32mINSERT INTO "subcomments" ("content", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["content", "Two butter croissants of your choice (plain, almond or cheese). With a side of herb butter or house-made hazelnut spread."], ["created_at", "2018-07-25 22:29:23.945513"], ["updated_at", "2018-07-25 22:29:23.945513"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (48.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mSubcomment Create (0.2ms)[0m  [1m[32mINSERT INTO "subcomments" ("content", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["content", "Three egg whites with spinach, mushrooms, caramelized onions, tomatoes and low-fat feta cheese. With herbed quinoa, and your choice of rye or whole-grain toast."], ["created_at", "2018-07-25 22:29:23.995435"], ["updated_at", "2018-07-25 22:29:23.995435"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (48.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mSubcomment Create (0.2ms)[0m  [1m[32mINSERT INTO "subcomments" ("content", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["content", "Fresh Norwegian salmon, lightly brushed with our herbed Dijon mustard sauce, with choice of two sides."], ["created_at", "2018-07-25 22:29:24.045430"], ["updated_at", "2018-07-25 22:29:24.045430"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (48.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mSubcomment Create (0.2ms)[0m  [1m[32mINSERT INTO "subcomments" ("content", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["content", "Smoked salmon, poached eggs, diced red onions and Hollandaise sauce on an English muffin. With a side of roasted potatoes."], ["created_at", "2018-07-25 22:29:24.095467"], ["updated_at", "2018-07-25 22:29:24.095467"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (72.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mSubcomment Create (0.2ms)[0m  [1m[32mINSERT INTO "subcomments" ("content", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["content", "Thick slices of French toast bread, brown sugar, half-and-half and vanilla, topped with powdered sugar. With two eggs served any style, and your choice of smoked bacon or smoked ham."], ["created_at", "2018-07-25 22:29:24.168915"], ["updated_at", "2018-07-25 22:29:24.168915"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (66.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mSubcomment Create (0.2ms)[0m  [1m[32mINSERT INTO "subcomments" ("content", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["content", "Two butter croissants of your choice (plain, almond or cheese). With a side of herb butter or house-made hazelnut spread."], ["created_at", "2018-07-25 22:29:24.237121"], ["updated_at", "2018-07-25 22:29:24.237121"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (56.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mComment Update (0.2ms)[0m  [1m[33mUPDATE "comments" SET "user_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 6], ["updated_at", "2018-07-25 22:29:24.297016"], ["id", 1]]
+  ↳ db/seeds.rb:25
+  [1m[35m (45.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mComment Update (0.1ms)[0m  [1m[33mUPDATE "comments" SET "user_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 3], ["updated_at", "2018-07-25 22:29:24.344645"], ["id", 2]]
+  ↳ db/seeds.rb:25
+  [1m[35m (48.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:25
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mComment Update (0.2ms)[0m  [1m[33mUPDATE "comments" SET "user_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 10], ["updated_at", "2018-07-25 22:29:24.394708"], ["id", 3]]
+  ↳ db/seeds.rb:25
+  [1m[35m (48.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mComment Update (0.2ms)[0m  [1m[33mUPDATE "comments" SET "user_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 2], ["updated_at", "2018-07-25 22:29:24.444611"], ["id", 4]]
+  ↳ db/seeds.rb:25
+  [1m[35m (48.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:25
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mComment Update (0.2ms)[0m  [1m[33mUPDATE "comments" SET "user_id" = ?, "updated_at" = ? WHERE "comments"."id" = ?[0m  [["user_id", 4], ["updated_at", "2018-07-25 22:29:24.494869"], ["id", 5]]
+  ↳ db/seeds.rb:25
+  [1m[35m (89.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mLink Load (0.2ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:30
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[36mLink Update (0.2ms)[0m  [1m[33mUPDATE "links" SET "user_id" = ?, "updated_at" = ? WHERE "links"."id" = ?[0m  [["user_id", 7], ["updated_at", "2018-07-25 22:29:24.586927"], ["id", 1]]
+  ↳ db/seeds.rb:30
+  [1m[35m (47.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[36mLink Load (0.1ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:30
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[36mLink Update (0.2ms)[0m  [1m[33mUPDATE "links" SET "user_id" = ?, "updated_at" = ? WHERE "links"."id" = ?[0m  [["user_id", 7], ["updated_at", "2018-07-25 22:29:24.636301"], ["id", 2]]
+  ↳ db/seeds.rb:30
+  [1m[35m (48.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[36mLink Load (0.1ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:30
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[36mLink Update (0.3ms)[0m  [1m[33mUPDATE "links" SET "user_id" = ?, "updated_at" = ? WHERE "links"."id" = ?[0m  [["user_id", 7], ["updated_at", "2018-07-25 22:29:24.686561"], ["id", 3]]
+  ↳ db/seeds.rb:30
+  [1m[35m (47.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[36mLink Load (0.1ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:30
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[36mLink Update (0.2ms)[0m  [1m[33mUPDATE "links" SET "user_id" = ?, "updated_at" = ? WHERE "links"."id" = ?[0m  [["user_id", 1], ["updated_at", "2018-07-25 22:29:24.736823"], ["id", 4]]
+  ↳ db/seeds.rb:30
+  [1m[35m (46.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[36mLink Load (0.1ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:30
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[36mLink Update (0.1ms)[0m  [1m[33mUPDATE "links" SET "user_id" = ?, "updated_at" = ? WHERE "links"."id" = ?[0m  [["user_id", 8], ["updated_at", "2018-07-25 22:29:24.786559"], ["id", 5]]
+  ↳ db/seeds.rb:30
+  [1m[35m (48.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[36mLink Load (0.1ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ db/seeds.rb:30
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[36mLink Update (0.1ms)[0m  [1m[33mUPDATE "links" SET "user_id" = ?, "updated_at" = ? WHERE "links"."id" = ?[0m  [["user_id", 10], ["updated_at", "2018-07-25 22:29:24.836519"], ["id", 6]]
+  ↳ db/seeds.rb:30
+  [1m[35m (48.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[36mLink Load (0.1ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ db/seeds.rb:30
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[36mLink Update (0.1ms)[0m  [1m[33mUPDATE "links" SET "user_id" = ?, "updated_at" = ? WHERE "links"."id" = ?[0m  [["user_id", 4], ["updated_at", "2018-07-25 22:29:24.886510"], ["id", 7]]
+  ↳ db/seeds.rb:30
+  [1m[35m (48.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[36mLink Load (0.1ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ db/seeds.rb:30
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[36mLink Update (0.2ms)[0m  [1m[33mUPDATE "links" SET "user_id" = ?, "updated_at" = ? WHERE "links"."id" = ?[0m  [["user_id", 7], ["updated_at", "2018-07-25 22:29:24.936525"], ["id", 8]]
+  ↳ db/seeds.rb:30
+  [1m[35m (48.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[36mLink Load (0.1ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ db/seeds.rb:30
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[36mLink Update (0.2ms)[0m  [1m[33mUPDATE "links" SET "user_id" = ?, "updated_at" = ? WHERE "links"."id" = ?[0m  [["user_id", 7], ["updated_at", "2018-07-25 22:29:24.986525"], ["id", 9]]
+  ↳ db/seeds.rb:30
+  [1m[35m (56.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[36mLink Load (0.1ms)[0m  [1m[34mSELECT  "links".* FROM "links" WHERE "links"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ db/seeds.rb:30
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[36mLink Update (0.1ms)[0m  [1m[33mUPDATE "links" SET "user_id" = ?, "updated_at" = ? WHERE "links"."id" = ?[0m  [["user_id", 9], ["updated_at", "2018-07-25 22:29:25.044566"], ["id", 10]]
+  ↳ db/seeds.rb:30
+  [1m[35m (49.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:30
+  [1m[36mSubcomment Load (0.2ms)[0m  [1m[34mSELECT  "subcomments".* FROM "subcomments" WHERE "subcomments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:35
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mSubcomment Update (0.2ms)[0m  [1m[33mUPDATE "subcomments" SET "comment_id" = ?, "updated_at" = ? WHERE "subcomments"."id" = ?[0m  [["comment_id", 1], ["updated_at", "2018-07-25 22:29:25.096269"], ["id", 1]]
+  ↳ db/seeds.rb:35
+  [1m[35m (56.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mSubcomment Load (0.1ms)[0m  [1m[34mSELECT  "subcomments".* FROM "subcomments" WHERE "subcomments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:35
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mSubcomment Update (0.2ms)[0m  [1m[33mUPDATE "subcomments" SET "comment_id" = ?, "updated_at" = ? WHERE "subcomments"."id" = ?[0m  [["comment_id", 5], ["updated_at", "2018-07-25 22:29:25.154079"], ["id", 2]]
+  ↳ db/seeds.rb:35
+  [1m[35m (56.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mSubcomment Load (0.1ms)[0m  [1m[34mSELECT  "subcomments".* FROM "subcomments" WHERE "subcomments"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:35
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mSubcomment Update (0.1ms)[0m  [1m[33mUPDATE "subcomments" SET "comment_id" = ?, "updated_at" = ? WHERE "subcomments"."id" = ?[0m  [["comment_id", 6], ["updated_at", "2018-07-25 22:29:25.212460"], ["id", 3]]
+  ↳ db/seeds.rb:35
+  [1m[35m (56.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mSubcomment Load (0.2ms)[0m  [1m[34mSELECT  "subcomments".* FROM "subcomments" WHERE "subcomments"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:35
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mSubcomment Update (0.3ms)[0m  [1m[33mUPDATE "subcomments" SET "comment_id" = ?, "updated_at" = ? WHERE "subcomments"."id" = ?[0m  [["comment_id", 1], ["updated_at", "2018-07-25 22:29:25.271595"], ["id", 4]]
+  ↳ db/seeds.rb:35
+  [1m[35m (64.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mSubcomment Load (0.1ms)[0m  [1m[34mSELECT  "subcomments".* FROM "subcomments" WHERE "subcomments"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:35
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mSubcomment Update (0.2ms)[0m  [1m[33mUPDATE "subcomments" SET "comment_id" = ?, "updated_at" = ? WHERE "subcomments"."id" = ?[0m  [["comment_id", 8], ["updated_at", "2018-07-25 22:29:25.364467"], ["id", 5]]
+  ↳ db/seeds.rb:35
+  [1m[35m (47.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mSubcomment Load (0.1ms)[0m  [1m[34mSELECT  "subcomments".* FROM "subcomments" WHERE "subcomments"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ db/seeds.rb:35
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mSubcomment Update (0.2ms)[0m  [1m[33mUPDATE "subcomments" SET "comment_id" = ?, "updated_at" = ? WHERE "subcomments"."id" = ?[0m  [["comment_id", 5], ["updated_at", "2018-07-25 22:29:25.413281"], ["id", 6]]
+  ↳ db/seeds.rb:35
+  [1m[35m (47.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mSubcomment Load (0.1ms)[0m  [1m[34mSELECT  "subcomments".* FROM "subcomments" WHERE "subcomments"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ db/seeds.rb:35
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mSubcomment Update (0.2ms)[0m  [1m[33mUPDATE "subcomments" SET "comment_id" = ?, "updated_at" = ? WHERE "subcomments"."id" = ?[0m  [["comment_id", 10], ["updated_at", "2018-07-25 22:29:25.462479"], ["id", 7]]
+  ↳ db/seeds.rb:35
+  [1m[35m (49.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mSubcomment Load (0.1ms)[0m  [1m[34mSELECT  "subcomments".* FROM "subcomments" WHERE "subcomments"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ db/seeds.rb:35
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mSubcomment Update (0.2ms)[0m  [1m[33mUPDATE "subcomments" SET "comment_id" = ?, "updated_at" = ? WHERE "subcomments"."id" = ?[0m  [["comment_id", 7], ["updated_at", "2018-07-25 22:29:25.513786"], ["id", 8]]
+  ↳ db/seeds.rb:35
+  [1m[35m (46.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mSubcomment Load (0.1ms)[0m  [1m[34mSELECT  "subcomments".* FROM "subcomments" WHERE "subcomments"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ db/seeds.rb:35
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mSubcomment Update (0.1ms)[0m  [1m[33mUPDATE "subcomments" SET "comment_id" = ?, "updated_at" = ? WHERE "subcomments"."id" = ?[0m  [["comment_id", 9], ["updated_at", "2018-07-25 22:29:25.562488"], ["id", 9]]
+  ↳ db/seeds.rb:35
+  [1m[35m (50.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mSubcomment Load (0.1ms)[0m  [1m[34mSELECT  "subcomments".* FROM "subcomments" WHERE "subcomments"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ db/seeds.rb:35
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mSubcomment Update (0.2ms)[0m  [1m[33mUPDATE "subcomments" SET "comment_id" = ?, "updated_at" = ? WHERE "subcomments"."id" = ?[0m  [["comment_id", 8], ["updated_at", "2018-07-25 22:29:25.616349"], ["id", 10]]
+  ↳ db/seeds.rb:35
+  [1m[35m (44.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mSubcomment Load (0.1ms)[0m  [1m[34mSELECT  "subcomments".* FROM "subcomments" WHERE "subcomments"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ db/seeds.rb:35
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mSubcomment Update (0.1ms)[0m  [1m[33mUPDATE "subcomments" SET "comment_id" = ?, "updated_at" = ? WHERE "subcomments"."id" = ?[0m  [["comment_id", 10], ["updated_at", "2018-07-25 22:29:25.662487"], ["id", 11]]
+  ↳ db/seeds.rb:35
+  [1m[35m (48.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mSubcomment Load (0.1ms)[0m  [1m[34mSELECT  "subcomments".* FROM "subcomments" WHERE "subcomments"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ db/seeds.rb:35
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:35
+  [1m[36mSubcomment Update (0.1ms)[0m  [1m[33mUPDATE "subcomments" SET "comment_id" = ?, "updated_at" = ? WHERE "subcomments"."id" = ?[0m  [["comment_id", 5], ["updated_at", "2018-07-25 22:29:25.712466"], ["id", 12]]
+  ↳ db/seeds.rb:35
+  [1m[35m (52.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:35
